@@ -1,0 +1,36 @@
+version: '3'
+services:
+    php:
+        container_name: anaxago.php
+        build:
+            context: ./.provision/php
+        restart: always
+        ports:
+            - "8020:80"
+        volumes:
+            - "./etc/php/php.ini:/usr/local/etc/php/conf.d/php.ini"
+            - "./:/var/www/html"
+    myadmin:
+        container_name: anaxago.phpmyadmin
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - "8080:80"
+        environment:
+            - PMA_ARBITRARY=1
+            - PMA_HOST=anaxago.mysql
+        restart: always
+        depends_on:
+            - mysqldb
+    mysqldb:
+        container_name: anaxago.mysql
+        image: mysql:latest
+        restart: always
+        env_file:
+            - ".env"
+        environment:
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+        volumes:
+            - "./data/db/mysql:/var/lib/mysql"
