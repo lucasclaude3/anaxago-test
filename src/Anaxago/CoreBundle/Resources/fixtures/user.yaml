@@ -1,0 +1,13 @@
+Anaxago\CoreBundle\Entity\User:
+    user_1:
+        firstname: 'John'
+        lastname: 'Doe'
+        email: 'john@local.com'
+        plainPassword: 'john'
+
+    user_2:
+        firstname: 'admin'
+        lastname: 'anaxago'
+        email: 'admin@local.com'
+        plainPassword: 'admin'
+        roles: ['ROLE_ADMIN']

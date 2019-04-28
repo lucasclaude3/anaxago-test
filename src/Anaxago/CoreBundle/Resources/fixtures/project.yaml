@@ -1,0 +1,18 @@
+Anaxago\CoreBundle\Entity\Project:
+    project_1:
+        title: 'Fred de la compta'
+        description: "Dépoussiérer la comptabilité grâce à l'intelligence artificielle"
+        slug: 'fred-compta'
+        isFinanced: true
+
+    project_2:
+        title: 'Mojjo'
+        description: "L'intelligence artificielle au service du tennis : Mojjo transforme l'expérience des joueurs et des fans de tennis grâce à une technologie unique de captation et de traitement de la donnée"
+        slug: 'mojjo'
+        isFinanced: true
+
+    project_3:
+        title: 'Eole'
+        description: "Projet de construction d'une résidence de 80 logements sociaux à Petit-Bourg en Guadeloupe par le promoteur Orion."
+        slug: 'eole'
+        isFinanced: false

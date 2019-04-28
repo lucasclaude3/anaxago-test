@@ -1,0 +1,15 @@
+Anaxago\CoreBundle\Entity\Interest:
+    interest_1:
+        User: '@user_1'
+        Project: '@project_1'
+        amount: 100
+
+    interest_2:
+        User: '@user_1'
+        Project: '@project_2'
+        amount: 200
+
+    interest_3:
+        User: '@user_2'
+        Project: '@project_2'
+        amount: 300

@@ -72,12 +72,12 @@ class Interest
         return $this;
     }
 
-    public function getProject(): int
+    public function getProject(): Project
     {
         return $this->project;
     }
 
-    public function setProject(int $project): self
+    public function setProject(Project $project): self
     {
         $this->project = $project;
 
