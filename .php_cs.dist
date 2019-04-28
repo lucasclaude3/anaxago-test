@@ -1,0 +1,9 @@
+<?php
+
+$finder = PhpCsFixer\Finder::create()
+    ->exclude('var')
+    ->in(__DIR__);
+
+return PhpCsFixer\Config::create()
+    ->setUsingCache(false)
+    ->setFinder($finder);

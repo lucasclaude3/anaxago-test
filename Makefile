@@ -14,3 +14,8 @@ init-db:
 .PHONY: start
 start:
 	@docker-compose exec php bin/console server:run *:80
+
+.PHONY: php-cs-fixer
+php-cs-fixer:
+	@docker-compose exec php ./vendor/bin/php-cs-fixer fix --config .php_cs.dist
+
