@@ -19,3 +19,11 @@ start:
 php-cs-fixer:
 	@docker-compose exec php ./vendor/bin/php-cs-fixer fix --config .php_cs.dist
 
+.PHONY: phpstan
+phpstan:
+	@docker-compose exec php ./vendor/bin/phpstan analyse src/ tests/ --level 1
+
+.PHONY: phpunit
+phpunit:
+	@docker-compose exec php ./vendor/bin/simple-phpunit
+
