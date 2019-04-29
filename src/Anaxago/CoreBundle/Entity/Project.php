@@ -3,6 +3,7 @@
 namespace Anaxago\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Project
@@ -13,6 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Project
 {
     /**
+     * @Groups({"default"})
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -22,6 +24,7 @@ class Project
     private $id;
 
     /**
+     * @Groups({"default"})
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=255)
@@ -29,6 +32,7 @@ class Project
     private $slug;
 
     /**
+     * @Groups({"default"})
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
@@ -36,6 +40,7 @@ class Project
     private $title;
 
     /**
+     * @Groups({"default"})
      * @var string
      *
      * @ORM\Column(name="description", type="text")
@@ -43,6 +48,7 @@ class Project
     private $description;
 
     /**
+     * @Groups({"default"})
      * @var bool
      *
      * @ORM\Column(name="is_financed", type="boolean")

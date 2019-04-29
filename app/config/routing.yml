@@ -22,3 +22,8 @@ create_interest:
     path: /interests
     methods: ['POST']
     defaults: { _controller: AnaxagoCoreBundle:Interest:post }
+
+get_interests:
+    path: /interests
+    methods: ['GET']
+    defaults: { _controller: AnaxagoCoreBundle:Interest:get }

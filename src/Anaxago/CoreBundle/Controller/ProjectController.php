@@ -33,6 +33,6 @@ class ProjectController extends Controller
     {
         $projects = $this->entityManager->getRepository(Project::class)->findAll();
 
-        return new JsonResponse($this->normalizer->normalize($projects, 'json'));
+        return new JsonResponse($this->normalizer->normalize($projects, 'json', ['groups' => ['default']]));
     }
 }

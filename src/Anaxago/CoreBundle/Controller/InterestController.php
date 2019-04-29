@@ -12,6 +12,7 @@ use Anaxago\CoreBundle\Persistor\InterestPersistor;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -70,5 +71,20 @@ class InterestController extends Controller
                 'id' => $interestId,
             ],
         ], Response::HTTP_CREATED);
+    }
+
+    public function getAction(): JsonResponse
+    {
+        $user = $this->tokenStorage->getToken()->getUser();
+        if (!$user instanceof User) {
+            throw new HttpException(Response::HTTP_UNAUTHORIZED);
+        }
+
+        $userInterests = $this->entityManager->getRepository(Interest::class)->findBy(['user' => $user]);
+        $projects = array_map(function ($interest) {
+            return $interest->getProject();
+        }, $userInterests);
+
+        return new JsonResponse($this->normalizer->normalize($projects, 'json', ['groups' => ['default']]));
     }
 }
