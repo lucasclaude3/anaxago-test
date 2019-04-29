@@ -7,11 +7,13 @@ namespace Anaxago\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Anaxago\CoreBundle\Entity\User;
 use Anaxago\CoreBundle\Entity\Project;
+use Doctrine\ORM\Mapping\UniqueConstraint;
 
 /**
  * Interest
  *
- * @ORM\Table(name="interest")
+ * @ORM\Table(name="interest",
+ *    uniqueConstraints={@UniqueConstraint(name="unique_interest", columns={"user_id", "project_id"})})
  * @ORM\Entity(repositoryClass="Anaxago\CoreBundle\Repository\InterestRepository")
  */
 class Interest
@@ -26,7 +28,7 @@ class Interest
     private $id;
 
     /**
-     * @var int
+     * @var User
      *
      * @ORM\ManyToOne(targetEntity="User", inversedBy="interests")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
@@ -34,7 +36,7 @@ class Interest
     private $user;
 
     /**
-     * @var int
+     * @var Project
      *
      * @ORM\ManyToOne(targetEntity="Project", inversedBy="interests")
      * @ORM\JoinColumn(name="project_id", referencedColumnName="id")

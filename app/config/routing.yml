@@ -15,4 +15,10 @@ anaxago_core_registration:
 
 get_projets:
     path: /projects
+    methods: ['GET']
     defaults: { _controller: AnaxagoCoreBundle:Project:get }
+
+create_interest:
+    path: /interests
+    methods: ['POST']
+    defaults: { _controller: AnaxagoCoreBundle:Interest:post }
